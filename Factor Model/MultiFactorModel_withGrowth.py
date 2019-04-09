@@ -33,7 +33,7 @@ from    FactorModelCalculations import *
 import  pandas                  as pd
 import  numpy                   as np
 import  datetime                as dt
-import  sqlalchemy              as db
+#import  sqlalchemy              as db
 import  seaborn                 as sns
 import  matplotlib.pyplot       as plt
 import  matplotlib.dates        as mdates
@@ -67,8 +67,8 @@ dc  = DataClean()
 currentDirectory        = os.getcwd()
 
 # Connect to database
-engine                  = db.create_engine('sqlite:///' + currentDirectory + '/Data/Databases/SP500.db')
-connection              = engine.connect()
+#engine                  = db.create_engine('sqlite:///' + currentDirectory + '/Data/Databases/SP500.db')
+#connection              = engine.connect()
 
 # Declare constants
 numberOfSubs            = 20

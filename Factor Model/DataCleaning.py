@@ -28,7 +28,7 @@
 
 import  pandas              as pd
 import  datetime            as dt
-import  sqlalchemy          as db
+#import  sqlalchemy          as db
 import  os
 
 
@@ -43,8 +43,8 @@ class DataClean():
     # Instantiate class
     def __init__(self):
         currentDirectory        = os.getcwd()
-        self.engine             = db.create_engine('sqlite:///' + currentDirectory + '/Data/Databases/SP500.db')
-        self.connection         = self.engine.connect()
+        #self.engine             = db.create_engine('sqlite:///' + currentDirectory + '/Data/Databases/SP500.db')
+        #self.connection         = self.engine.connect()
 
 
     def _insert_row( self, row, df, df_insert ):
