@@ -285,9 +285,6 @@ else:
 ################################################################################
 
 if csv == False:
-    # Quarter dates
-    # fundamentalQuarters      = [ t for t in list( pd.read_csv(currentDirectory + '/CSVs/Dates/S&P_Fundamentals&Financials_Dates_1990_2018.csv',';')['FundamentalsQuarter'] ) ]
-
     # Load quality factors from database and add to dictionary
     qualityFactor        = { }
     for v in qualityMetrics.keys():
@@ -320,16 +317,8 @@ else:
 #--------------------------- Create sub portfolios -----------------------------
 ################################################################################
 
-# Load CSVs
-
-
-
-
-# Make factors the same length
-
-# Find minimum length
+# Make factors the same length - starting in 2010
 minimum                 = min( len(sizeScore) , len(momentumScore), len(lowVolScore), len(combinedValueScores), len(combinedQualityScores) ) - 7
-#minimum = len(sizeScore) - 21
 
 # Market Cap
 marketCap               = dc._reduce_to_same_dates(marketCap, minimum)

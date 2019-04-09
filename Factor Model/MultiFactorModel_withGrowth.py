@@ -282,9 +282,6 @@ else:
 ################################################################################
 
 if csv == False:
-    # Quarter dates
-    # fundamentalQuarters      = [ t for t in list( pd.read_csv(currentDirectory + '/CSVs/Dates/S&P_Fundamentals&Financials_Dates_1990_2018.csv',';')['FundamentalsQuarter'] ) ]
-
     # Load quality factors from database and add to dictionary
     qualityFactor        = { }
     for v in qualityMetrics.keys():
@@ -353,16 +350,8 @@ else:
 #--------------------------- Create sub portfolios -----------------------------
 ################################################################################
 
-# Load CSVs
-
-
-
-
-# Make factors the same length
-
-# Find minimum length
+# Make factors the same length - starting in 2010
 minimum                 = min( len(sizeScore) , len(momentumScore), len(lowVolScore), len(combinedValueScores), len(combinedQualityScores), len(combinedGrowthScores) ) - 7
-#minimum = len(sizeScore) - 21
 
 # Market Cap
 marketCap               = dc._reduce_to_same_dates(marketCap, minimum)
@@ -387,10 +376,6 @@ combinedGrowthScores    = dc._reduce_to_same_dates(combinedGrowthScores, minimum
 combinedGrowthRanks     = dc._reduce_to_same_dates(combinedGrowthRanks, minimum)
 
 
-
-#plt.bar(lowVolRanks[permnos].columns, lowVolRanks[permnos].loc[0].sort_values(axis = 0))
-
-
 ################################################################################
 #-------------------- Create equal market cap sub portfolios -------------------
 ################################################################################
@@ -407,6 +392,7 @@ valueSubs               = fm._create_equal_market_cap_subportfolios( combinedVal
 qualitySubs             = fm._create_equal_market_cap_subportfolios( combinedQualityScores, combinedQualityRanks, marketCap, numberOfSubs, 'ascending'  )
 # Growth
 growthSubs              = fm._create_equal_market_cap_subportfolios( combinedGrowthScores, combinedGrowthRanks, marketCap, numberOfSubs, 'ascending'  )
+
 
 ################################################################################
 #------------------ Calculate and apply factor multipliers ---------------------
